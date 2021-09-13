@@ -37,9 +37,14 @@
 ################################################################
 
 ## GC configuration
+{% if es_use_g1gc %}
+-XX:+UseG1GC
+-XX:MaxGCPauseMillis={{ es_g1gc_max_pause_millis }}
+{% else %}
 -XX:+UseConcMarkSweepGC
 -XX:CMSInitiatingOccupancyFraction=75
 -XX:+UseCMSInitiatingOccupancyOnly
+{% endif %}
 
 ## optimizations
 
