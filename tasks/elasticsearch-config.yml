@@ -60,7 +60,7 @@
   notify: restart elasticsearch
 
 #Copy the systemd specific file if systemd is installed
-- when: use_system_d and (m_lock_enabled or es_max_open_files is defined)
+- when: use_system_d and (m_lock_enabled or es_max_open_files or sysd_always_restart is defined)
   become: yes
   block:
     - name: Make sure destination dir exists
