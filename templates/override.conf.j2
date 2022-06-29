@@ -5,3 +5,7 @@ LimitMEMLOCK = infinity
 {% if es_max_open_files is defined %}
 LimitNOFILE = {{ es_max_open_files }}
 {% endif %}
+{% if sysd_on_failure_restart %}
+Restart=on-failure
+RestartSec=30
+{% endif %}
